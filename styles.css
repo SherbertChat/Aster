@@ -1,0 +1,246 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    height: 100vh;
+}
+
+.app-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.sidebar {
+    width: 60px;
+    background-color: #2c2f33;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: width 0.3s;
+    overflow: hidden;
+    position: relative;
+    justify-content: space-between;
+}
+
+.sidebar:hover {
+    width: 200px;
+}
+
+.sidebar-content,
+.sidebar-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.sidebar-item .material-icons {
+    font-size: 24px;
+}
+
+.tooltip {
+    display: none;
+    margin-left: 10px;
+    font-size: 16px;
+    position: absolute;
+    left: 60px;
+    white-space: nowrap;
+}
+
+.sidebar:hover .tooltip {
+    display: inline-block;
+}
+
+.chat-container {
+    width: 100%;
+    background-color: #36393f;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.add-item {
+    margin-top: auto;
+}
+
+/* Spotlight Modal Styles */
+.spotlight-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.spotlight-modal.active {
+    display: flex;
+}
+
+.spotlight-content {
+    background: #2c2f33;
+    padding: 20px;
+    border-radius: 8px;
+    width: 50%;
+    max-width: 600px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#spotlight-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.spotlight-results {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.spotlight-result-item {
+    padding: 10px;
+    background: #3c3f45;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Channel List Styles */
+.channel-container {
+    background-color: #2c2f33;
+    width: 300px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #23272a;
+}
+
+.banner {
+    position: relative;
+    text-align: center;
+}
+
+.banner img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.channel-title {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.channel-list {
+    padding: 10px;
+}
+
+.channel-section {
+    margin-bottom: 20px;
+}
+
+.channel-section h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.channel-item {
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.channel-item:hover {
+    background-color: #3c3f45;
+}
+
+/* Chat Styles */
+.chat-header {
+    padding: 10px;
+    background-color: #2c2f33;
+    border-bottom: 1px solid #23272a;
+}
+
+.chat-header h2 {
+    margin: 0;
+}
+
+.chat-messages {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.message {
+    margin-bottom: 20px;
+}
+
+.message-user {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.message-text {
+    background-color: #40444b;
+    padding: 10px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.chat-input {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #2c2f33;
+    border-top: 1px solid #23272a;
+}
+
+.chat-input input {
+    flex-grow: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #40444b;
+    color: white;
+    margin-right: 10px;
+}
+
+.chat-input button {
+    background-color: #7289da;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+}
+
+.chat-input button .material-icons {
+    vertical-align: middle;
+}
