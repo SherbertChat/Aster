@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .loader {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #3498db;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        #content {
+            display: none;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="loader"></div>
+    <div id="content">
+        <h1>Files are updated and loaded!</h1>
+        <ul id="file-list"></ul>
+    </div>
+
+    <script>
+        // Configuration
+        const githubRepo = 'owner/repo'; // Replace with your GitHub repository details
+        const githubApiUrl = `https://api.github.com/repos/${githubRepo}/contents/`;
+
+        // Function to check for updates from GitHub
+        async function checkForUpdates() {
+            try {
+                const response = await fetch(githubApiUrl, {
+                    headers: {
+                        'Accept': 'application/vnd.github.v3+json',
+                        'User-Agent': 'request'
+                    }
+                });
+                if (!response.ok) throw new Error('Failed to fetch data from GitHub');
+                const files = await response.json();
+
+                // Display file names in the list
+                const fileList = document.getElementById('file-list');
+                files.forEach(file => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = file.name;
+                    fileList.appendChild(listItem);
+                });
+
+                // Hide the loader and show the content
+                document.querySelector('.loader').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+
+            } catch (error) {
+                console.error('Error:', error);
+                document.querySelector('.loader').style.display = 'none';
+                document.getElementById('content').innerHTML = '<h1>Error loading files</h1>';
+            }
+        }
+
+        // Call the function to start checking for updates
+        checkForUpdates();
+    </script>
+</body>
+</html>
